@@ -61,6 +61,16 @@
     .search__image{
       display: none;
     }
+  
+  }
+
+  @media screen and (max-width: 540px) {
+    .search {
+      width: 95%;
+    }
+
+
+  
   }
   
  

@@ -28,7 +28,6 @@ function Header({ menuIsOpened, openMenu, closeMenu, isProfilePageActive, logged
                 >Сохраненные фильмы</NavLink>
               </div>
               <NavLink to="/profile" className="navigation__account" onClick={closeMenu}>Аккаунт
-              <img className="navigation__account-icon" src={account} alt="иконка аккаунта"/>
               </NavLink>
             </div>
             <button className={`header__button-burger ${!isProfilePageActive && "header__button-burger_white"}`} onClick={openMenu}/>

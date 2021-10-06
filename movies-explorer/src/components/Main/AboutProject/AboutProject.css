@@ -74,6 +74,11 @@
     }
 
   }
+  @media screen and (max-width: 732px){
+    .about-project {
+      padding: 0 5%;
+    }
+  }
 
   @media screen and (max-width: 500px){
     .about-project {

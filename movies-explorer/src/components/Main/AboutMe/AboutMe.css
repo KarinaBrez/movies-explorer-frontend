@@ -72,6 +72,12 @@
   padding-right: 0;
 }
 
+@media screen and (min-width: 654px){
+  .about-me__bio-wrapper {
+   padding-left: 0.1%;
+  }
+  
+}
 @media screen and (min-width: 656px) {
   .about-me__wrapper {
     flex-direction: row-reverse;
@@ -103,6 +109,8 @@
     width: 364px;
   }
 }
+
+
 
 @media screen and (min-width: 1000px) {
   .about-me__name {

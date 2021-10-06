@@ -1,4 +1,6 @@
 .movie-card {
+    margin-top: 0;
+    margin-bottom: 35px;
     color: #000000;
     background: #FDFDFD;
   }
@@ -20,7 +22,8 @@
   
   .movie-card__title {
     margin: 0;
-    padding: 14px;
+    padding-top: 14px;
+    padding-left: 14px;
   
     font-weight: normal;
     font-size: 18px;
@@ -45,7 +48,7 @@
   }
   
   .movie-card__button {
-    margin: 0;
+    margin: 0 0 22px;
     padding-left: 28px;
     background-color: #FFFFFF;
     background-position: center; 
@@ -72,13 +75,13 @@
   }
   
   .movie-card__button_type_in-bookmark:hover {
-    background: url("/src/images/delete-bookmark.svg") #F9F9F9 no-repeat;
+    background: url("/src/images/delete-bookmark.svg") white no-repeat;
     background-position-x: center;
     background-position-y: center;
   }
   
   .movie-card__button:hover {
-    background-color: #E8E8E8;
+    background-color: white;
     opacity: .7;
   }
   
@@ -90,6 +93,9 @@
    }
 
    @media screen and (max-width: 600px){
+     .movie-card {
+       margin: 0;
+     }
     .movie-card__content {
       margin: 0 auto;
       display: flex;

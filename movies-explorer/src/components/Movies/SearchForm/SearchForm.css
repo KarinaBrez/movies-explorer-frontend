@@ -21,9 +21,9 @@
     font-size: 14px;
     line-height: 18px;
   }
-  .search__image{
-  }
+ 
   .search__input-button {
+    margin-right: 1%;
     width: 58.65px;
     height: 34px;
     background-color: black;
@@ -36,6 +36,11 @@
   
     cursor: pointer;
     transition: opacity .3s ease-in-out .3s;
+  }
+
+  .search__image{
+    margin-right: 5px;
+    order: -1;
   }
   
   .search__input-button:hover {

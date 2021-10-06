@@ -20,7 +20,6 @@ function Navigation({ menuIsOpened, closeMenu }) {
           </li>
         </ul>
         <NavLink to="/profile" className="navigation__account" onClick={closeMenu}>Аккаунт
-        <img className="navigation__account-icon" src={account} alt="иконка аккаунта"/>
         </NavLink>
       </nav>
       <div className="navigation__close-button" onClick={closeMenu}/>

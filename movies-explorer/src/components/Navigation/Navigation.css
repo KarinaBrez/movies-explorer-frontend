@@ -74,6 +74,7 @@
 }
 
 .navigation__account {
+  display: flex;
   max-width: 53px;
   background: white;
   box-shadow: none;
@@ -81,10 +82,18 @@
   border: none;
   margin: 0 auto;
   text-decoration: none;
+}
+
+.navigation__account_text{
+  padding: 0;
+  border: none;
+  text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
+  color: #000;
 }
+
 
 
 .navigation__close-button {
@@ -126,4 +135,9 @@
   .navigation__wrapper {
     visibility: hidden;
   }
+}
+.navigation__account_icon {
+  margin-left: 13px;
+  background-color:white;
+  border-radius: 6px;
 }

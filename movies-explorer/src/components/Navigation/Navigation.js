@@ -19,7 +19,9 @@ function Navigation({ menuIsOpened, closeMenu }) {
             <NavLink to="/saved-movies" className="navigation__link" onClick={closeMenu}>Сохраненные фильмы</NavLink>
           </li>
         </ul>
-        <NavLink to="/profile" className="navigation__account" onClick={closeMenu}>Аккаунт
+        <NavLink to="/profile" className="navigation__account" onClick={closeMenu}>
+          <p className="navigation__account_text">Аккаунт</p>
+        <img className="navigation__account_icon" src={account} alt="Иконка профиля"/>
         </NavLink>
       </nav>
       <div className="navigation__close-button" onClick={closeMenu}/>

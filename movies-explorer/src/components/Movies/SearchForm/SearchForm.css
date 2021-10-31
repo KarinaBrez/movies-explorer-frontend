@@ -5,6 +5,7 @@
     width: 814px;
     align-items: center;
     margin-left: 40px;
+    border-right: 2px solid #CBCBCB;
   }
   
   .search__input {
@@ -23,7 +24,7 @@
   }
  
   .search__input-button {
-    margin-right: 1%;
+    margin-right: 20px;
     width: 58.65px;
     height: 34px;
     background-color: black;
@@ -56,8 +57,10 @@
     .search {
       grid-column:1;
       grid-row: 1;
+      border-right: none;
     }
   }
+
   @media screen and (max-width: 633px) {
     .search {
       margin: 0 10px;

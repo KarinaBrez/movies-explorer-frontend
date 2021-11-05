@@ -75,13 +75,17 @@
 
 .navigation__account {
   display: flex;
-  max-width: 53px;
+  justify-content: center;
+  align-items: center;
+  max-width: 100px;
   background: white;
   box-shadow: none;
   padding: 8px 20px;
   border: none;
   margin: 0 auto;
   text-decoration: none;
+  font-weight: 500;
+  color: #000;
 }
 
 .navigation__account_text{
@@ -91,7 +95,6 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-  color: #000;
 }
 
 
@@ -131,13 +134,13 @@
   }
 }
 
-@media screen and (min-width: 769px){
+@media screen and (min-width: 1200px){
   .navigation__wrapper {
     visibility: hidden;
   }
 }
 .navigation__account_icon {
-  margin-left: 13px;
-  background-color:white;
-  border-radius: 6px;
+  width: 16px;
+  height: 16px;
+  margin-left: 14px;
 }

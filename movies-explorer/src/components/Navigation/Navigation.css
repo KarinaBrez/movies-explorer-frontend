@@ -43,7 +43,7 @@
 }
 
 .navigation__link-wrapper:last-of-type {
-  padding-bottom: 444px;
+  padding-bottom: 436px;
 }
 
 .navigation__link {
@@ -119,6 +119,11 @@
 .navigation__close-button:hover {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
+.navigation__account_icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 14px;
+}
 
 @media screen and (min-width: 450px){
   .navigation {
@@ -133,14 +138,13 @@
     padding-bottom: 614px;
   }
 }
-
+@media screen and (min-width: 519px){
+  .navigation {
+    min-height: 1024px;
+  }
+}
 @media screen and (min-width: 1200px){
   .navigation__wrapper {
     visibility: hidden;
   }
-}
-.navigation__account_icon {
-  width: 16px;
-  height: 16px;
-  margin-left: 14px;
 }

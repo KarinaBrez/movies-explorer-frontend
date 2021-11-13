@@ -19,7 +19,7 @@ function Header({ menuIsOpened, openMenu, closeMenu, isProfilePageActive, logged
             <div className="header__menu-wrapper">
               <div className="header__menu-links-wrapper">
                 <NavLink to="/movies"
-                         className={`navigation__link navigation__link_is-active navigation__link`}
+                         className={`navigation__link`}
                          onClick={closeMenu}
                 >Фильмы</NavLink>
                 <NavLink to="/saved-movies"

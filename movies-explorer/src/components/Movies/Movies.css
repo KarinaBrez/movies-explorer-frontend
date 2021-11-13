@@ -10,6 +10,9 @@
   margin: 70px auto 80px;
   width: 100%;
   max-width: 1280px;
+  background: #FDFDFD;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 9px;
 }
 
 .movies__footer-wrapper {
@@ -26,3 +29,10 @@
   max-width: 1280px;
 }
 
+
+@media screen and (max-width: 764px){
+  .movies__search-wrapper{
+  box-shadow: none;
+  border-radius: none;
+  }
+}

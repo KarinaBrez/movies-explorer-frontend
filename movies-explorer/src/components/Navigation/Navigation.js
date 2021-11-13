@@ -2,11 +2,11 @@ import React from 'react';
 
 import './Navigation.css';
 import {NavLink} from "react-router-dom";
-import account from '../../images/account_icon.svg'
 
 function Navigation({ menuIsOpened, closeMenu }) {
   return(
     <div className={`navigation__wrapper ${!menuIsOpened && "navigation__wrapper_hidden"}`}>
+      <div className="navigation__overlay"></div>
       <nav className="navigation">
         <ul className="navigation__links">
           <li className="navigation__link-wrapper">
@@ -21,7 +21,7 @@ function Navigation({ menuIsOpened, closeMenu }) {
         </ul>
         <NavLink to="/profile" className="navigation__account" onClick={closeMenu}>
           <p className="navigation__account_text">Аккаунт</p>
-        <img className="navigation__account_icon" src={account} alt="Иконка профиля"/>
+        <div className="navigation__account_icon"></div>
         </NavLink>
       </nav>
       <div className="navigation__close-button" onClick={closeMenu}/>

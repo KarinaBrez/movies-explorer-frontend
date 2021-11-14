@@ -1,0 +1,112 @@
+.about-project {
+    background-color: #ffffff;
+    color: #000000;
+    min-width: 320px;
+    box-sizing: border-box;
+    padding: 0 70px;
+  }
+  
+  .about-project__content {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  
+  .about-project__subtitle {
+    margin: 0;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 60px 0 16px;
+    letter-spacing: -0.04em;
+  }
+  
+  .about-project__item-text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .progress-bar {
+    padding: 60px 0 70px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  
+  .progress-bar__element {
+    color: #000000;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    padding: 14px;
+  }
+  
+  .progress-bar__element_color_black {
+    color: #FFFFFF;
+    background-color: #000000;
+  }
+  
+  .progress-bar__element_color_grey {
+    background-color: #F2F2F2;
+  }
+  
+  .progress-bar__element-description {
+    color: #A0A0A0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+  }
+  
+  @media screen and (max-width: 768px){
+    .about-project__item-text {
+      font-size: 12px;
+      line-height: 18px;
+  
+    }
+
+  }
+  @media screen and (max-width: 732px){
+    .about-project {
+      padding: 0 5%;
+    }
+  }
+
+  @media screen and (max-width: 500px){
+    .about-project {
+      background-color: #ffffff;
+      color: #000000;
+      min-width: 320px;
+      box-sizing: border-box;
+      padding: 0 18px;
+    }
+    .about-project__content {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .about-project__subtitle {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    
+    .about-project__item-text {
+      font-size: 11px;
+      line-height: 16px;
+    }
+    .progress-bar__element {
+      font-size: 11px;
+      line-height: 13px;
+    }
+    .progress-bar__element-description {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }

@@ -14,7 +14,7 @@ function Header({ menuIsOpened, openMenu, closeMenu, isProfilePageActive, logged
       <NavLink to="/"><img src={logo} alt="Логотип Movie Explorer" className="header__logo"/></NavLink>
 
       {
-        isProfilePageActive && (
+        loggedIn ? (
           <div className="header__wrapper">
             <div className="header__menu-wrapper">
               <div className="header__menu-links-wrapper">
@@ -34,10 +34,7 @@ function Header({ menuIsOpened, openMenu, closeMenu, isProfilePageActive, logged
             <button className={`header__button-burger ${!isProfilePageActive && "header__button-burger_white"}`} onClick={openMenu}/>
             <Navigation menuIsOpened={menuIsOpened} closeMenu={closeMenu}/>
           </div>
-        )} 
-         {
-          !isProfilePageActive &&
-          (
+        ):(
           <div className={`header__wrapper ${isProfilePageActive && "header__button_hidden"}`}>
             <NavLink to="/signup" className="header__register">Регистрация</NavLink>
             <NavLink to="signin" className="header__button">Войти</NavLink>

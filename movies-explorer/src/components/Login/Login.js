@@ -6,16 +6,45 @@ import logo from "../../images/logo.svg";
 import Form from "../Form/Form";
 import Input from "../Input/Input";
 
-function Login() {
+function Login({onLogin,values,isLoading,handleOnChange,errors,isValid,submitError,})
+ {
+  const handleLogin = (evt) => {
+    evt.preventDefault();
+    onLogin(values);
+  }
+  const errorStatus = (status) => {
+    if(status === '400') {
+      return "Некорректный логин или пароль"
+    }
+    if(status === '429') {
+      return "Превышен лимит запросов"
+    }
+    if(status === '500') {
+      return "Произошла ошибка на сервере"
+    }
+    if(status === '404') {
+      return "Страница не найдена"
+    }
+    if(status === '401') {
+      return "Произошла ошибка авторизации. Проверьте правильность введенных данных"
+    }
+  }
+
+  const errorMsg = errorStatus(submitError);
+
   return(
     <div className="login register">
       <NavLink to="/"><img src={logo} alt="логотип Movie" className="header__logo register__header"/></NavLink>
       <h2 className="register__title">Рады видеть!</h2>
       <Form
-        buttonText="Войти"
+        buttonText={isLoading ? "Проверяем данные..." : "Войти"}
         text="Еще не зарегистрированы?"
         url="/signup"
         linkText="Регистрация"
+        onSubmit={handleLogin}
+        errorMsg={errorMsg}
+        isLoading={isLoading}
+        isValid={isValid}
       >
         <Input
           id="user-email"
@@ -24,7 +53,10 @@ function Login() {
           inputTitle="E-mail"
           minLength="7"
           maxLength="200"
-          errorText=""
+          errorText={errors.email}
+          onChange={handleOnChange}
+          value={values.email || ''}
+          isValid={isValid}
         />
         <Input
           id="user-password"
@@ -33,7 +65,10 @@ function Login() {
           inputTitle="Пароль"
           minLength="8"
           maxLength="200"
-          errorText="Что-то пошло не так..."
+          errorText={errors.password}
+          onChange={handleOnChange}
+          value={values.password || ''}
+          isValid={isValid}
         />
       </Form>
     </div>

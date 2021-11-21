@@ -5,70 +5,56 @@ import {NavLink} from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Form from "../Form/Form";
 import Input from "../Input/Input";
+import {Validator} from "../../utils/Validator";
 
-function Login({onLogin,values,isLoading,handleOnChange,errors,isValid,submitError,})
- {
-  const handleLogin = (evt) => {
-    evt.preventDefault();
-    onLogin(values);
-  }
-  const errorStatus = (status) => {
-    if(status === '400') {
-      return "Некорректный логин или пароль"
-    }
-    if(status === '429') {
-      return "Превышен лимит запросов"
-    }
-    if(status === '500') {
-      return "Произошла ошибка на сервере"
-    }
-    if(status === '404') {
-      return "Страница не найдена"
-    }
-    if(status === '401') {
-      return "Произошла ошибка авторизации. Проверьте правильность введенных данных"
-    }
-  }
+function Login(props){
 
-  const errorMsg = errorStatus(submitError);
+const { values, handleChange, isFormValid, errors, setValues } = Validator()
+
+function handleLogin(evt) {
+  evt.preventDefault();
+  props.onLogin(values.password, values.email);
+  props.onClear();
+}
+  
 
   return(
     <div className="login register">
       <NavLink to="/"><img src={logo} alt="логотип Movie" className="header__logo register__header"/></NavLink>
       <h2 className="register__title">Рады видеть!</h2>
       <Form
-        buttonText={isLoading ? "Проверяем данные..." : "Войти"}
+        buttonText={props.isSaving ? "Загружаемся" : "Войти"}
         text="Еще не зарегистрированы?"
         url="/signup"
         linkText="Регистрация"
         onSubmit={handleLogin}
-        errorMsg={errorMsg}
-        isLoading={isLoading}
-        isValid={isValid}
+        disabled={isFormValid}
+        onClear={props.onClear}
+        errorMsg={props.errorMessage}
       >
         <Input
-          id="user-email"
-          type="email"
-          name="email"
-          inputTitle="E-mail"
-          minLength="7"
-          maxLength="200"
-          errorText={errors.email}
-          onChange={handleOnChange}
-          value={values.email || ''}
-          isValid={isValid}
+         type="email"
+         name="email"
+         inputTitle="E-mail"
+         minLength="7"
+         maxLength="200"
+         errorText={errors.email}
+         value={values.email || ""}
+         onChange={handleChange}
+         isValid={isFormValid}
+         required
         />
         <Input
-          id="user-password"
           type="password"
           name="password"
           inputTitle="Пароль"
           minLength="8"
           maxLength="200"
           errorText={errors.password}
-          onChange={handleOnChange}
-          value={values.password || ''}
-          isValid={isValid}
+          value={values.password || ""}
+          onChange={handleChange}
+          isValid={isFormValid}
+          required
         />
       </Form>
     </div>

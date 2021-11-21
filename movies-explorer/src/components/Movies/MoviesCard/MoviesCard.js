@@ -1,58 +1,90 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 
 import './MoviesCard.css';
+import movieMock from '../../../images/movies/movie.png'
+
+import {useLocation} from "react-router-dom";
 const moviesImage = 'https://api.nomoreparties.co'
+
 
 function MoviesCard(props) {
 
-  const [isInBookmark, setIsInBookmark] = useState(false);
-  const savedMoviesInStore = JSON.parse(localStorage.getItem('savedMovies'));
+  const [isSaved, setIsSaved] = useState(false);
 
-  const durationFloor = (min) => {
-    return `${Math.floor(min / 60) % 24}ч ${min % 60}м`;
+  const movie = {
+    country : props.movie.country || 'Не указано',
+    director: props.movie.director || 'Не указан',
+    duration: props.movie.duration || 0,
+    year: props.movie.year || 'Не указан',
+    description: props.movie.description || 'Не указано',
+    image: `${props.movie.image === null ? `${movieMock}` : `${moviesImage}${props.movie.image?.url}`}`,
+    trailer: props.movie?.trailerLink,
+    nameRU: props.movie.nameRU || 'Не указано',
+    nameEN: props.movie.nameEN || 'Не указано',
+    thumbnail: `${props.movie.image === null ? `${movieMock}` : `${moviesImage}${props.movie.image?.formats?.thumbnail?.url}`}`,
+    movieId: props.movie.id,
   }
 
-  const handleAddBookmark = () => {
-    props.onSaveMovie(props.movie, isInBookmark, setIsInBookmark);
-  };
+  const duration = (minutes) => `${Math.floor(minutes / 60) % 24}ч ${minutes % 60}м`;
+  const imageMock = `${props.movie.image === null ? `${movieMock}` : `${moviesImage}${props.movie.image?.url}`}`;
+  const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+  const currentMovie = savedMovies.find((movie) => movie.nameRU === props.movie.nameRU);
 
-  const handleDeleteBookmark = () => {
-    props.onDeleteMovie(props.savedMovie);
+  const location = useLocation();
+
+  function handleLikeButtonClick() {
+    props.onMovieSave(movie);
+    setIsSaved(true);
   }
 
+  function handleDisLike() {
+    setIsSaved(false);
+    console.log(currentMovie)
+    props.onDeleteMovie(currentMovie._id);
+  }
+
+  function handleDeleteMovie() {
+    props.onDeleteMovie(props.movie._id);
+    setIsSaved(false);
+  }
+
+  useEffect(() => {
+    if (currentMovie) {
+      setIsSaved(true);
+    }
+  }, [currentMovie, location])
 
   return(
     <div className="movie-card">
       <figure className="movie-card__content">
-        <figcaption className="movie-card__info">
-          <h3 className="movie-card__title">{props.movie ? props.movie.nameRU : props.savedMovie.nameRU}</h3>
-          <p className="movie-card__duration">{props.movie ? durationFloor(props.movie.duration) : durationFloor(props.savedMovie.duration)}</p>
-          {
-          !props.isBookmarkPage ?
-            <button className={`movie-card__button ${isInBookmark && "movie-card__button_type_in-bookmark"}`}
-                    onClick={handleAddBookmark}
-            >
-              {isInBookmark || props.isBookmarkPage ? '' : 'Сохранить'}
-            </button>
-            :
-            <button className={`movie-card__button ${props.isBookmarkPage && "movie-card__button_type_remove-bookmark"}`}
-                    onClick={handleDeleteBookmark}
-            >
-              {isInBookmark || props.isBookmarkPage ? '' : 'Сохранить'}
-            </button>
-        }
+      <figcaption className="movie-card__info">
+          <h3 className="movie-card__title">{props.movie.nameRU}</h3>
+          <p className="movie-card__duration">{duration(props.movie.duration)}</p>
         </figcaption>
+
         <a
-          href={props.movie ? `${props.movie.trailerLink}` : `${props.savedMovie.trailer}`}
+          href={props.saved ? props.movie.trailer : props.movie.trailerLink}
           className="movie-card__link"
           target="_blank"
           rel="noreferrer"
         >
-        <img
-            src={props.movie ? `${moviesImage}${props.movie.image?.url}` : `${props.savedMovie.image}`}
+          <img
+            src={props.saved ? props.movie.image : imageMock}
             className="movie-card__image"
-            alt={props.movie ? `Постер к фильму: ${props.movie.title}` : `Постер к фильму: ${props.savedMovie.title}`}/>
+            alt={`Постер к фильму: ${props.movie.nameRU}`}/>
         </a>
+
+        {props.saved ?
+          <button
+            onClick={handleDeleteMovie}
+          />
+          :
+          <button
+            onClick={isSaved ? handleDisLike : handleLikeButtonClick}
+          >
+            Сохранить
+          </button>
+        }
       </figure>
     </div>
   );

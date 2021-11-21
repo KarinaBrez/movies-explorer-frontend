@@ -37,7 +37,7 @@ function Header({ menuIsOpened, openMenu, closeMenu, isProfilePageActive, logged
         ):(
           <div className={`header__wrapper ${isProfilePageActive && "header__button_hidden"}`}>
             <NavLink to="/signup" className="header__register">Регистрация</NavLink>
-            <NavLink to="signin" className="header__button">Войти</NavLink>
+            <NavLink to="/signin" className="header__button">Войти</NavLink>
           </div>
         )
       }

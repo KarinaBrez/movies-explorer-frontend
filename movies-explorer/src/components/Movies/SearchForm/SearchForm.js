@@ -1,22 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './SearchForm.css';
 import search from '../../../images/searsh.svg'
 
 function SearchForm(props) {
+
+  const [search, setSearch] = useState('');
+
+  const [isSearchValid, setIsSearchValid] = useState(true);
+
+  function handleSearchChange(evt) {
+    setSearch(evt.target.value);
+    setIsSearchValid(evt.target.checkValidity());
+  }
+
+  function handleSearchSavedMovies(evt) {
+    evt.preventDefault();
+    props.onSearchSavedMovies(search);
+  }
+
+  function handleSearchMovies(evt) {
+    evt.preventDefault();
+    props.onSearchMovies(search);
+  }
   return(
     <form 
-    onSubmit={props.onSubmit}
+    onSubmit={props.saved ? handleSearchSavedMovies : handleSearchMovies}
     className="search"
     name="search"
-    noValidate
     >
       <input 
       type="text"
       placeholder="Фильм"
       className="search__input"
-      value={props.searchValue || ''}
-      onChange={props.onChange}
+      value={search || ''}
+      onChange={handleSearchChange}
       required
       />
       <img className="search__image" src={search} alt ="Лупа"/>
